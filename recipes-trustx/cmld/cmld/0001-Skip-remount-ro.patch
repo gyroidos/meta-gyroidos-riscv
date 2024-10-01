@@ -1,0 +1,28 @@
+From e9f1b9fb77514b0c7d4cd838169c68a8c09dfea6 Mon Sep 17 00:00:00 2001
+From: Felix Wruck <felix.wruck@aisec.fraunhofer.de>
+Date: Mon, 30 Jan 2023 21:08:29 +0100
+Subject: [PATCH] Skip remount ro
+
+---
+ daemon/cmld.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/daemon/cmld.c b/daemon/cmld.c
+index 6020224..283a51b 100644
+--- a/daemon/cmld.c
++++ b/daemon/cmld.c
+@@ -1394,8 +1394,9 @@ cmld_init(const char *path)
+ 	const char *c0os_name = device_config_get_c0os(device_config);
+ 	cmld_c0os_name = c0os_name ? mem_strdup(c0os_name) : NULL;
+ 
+-	if (mount_remount_root_ro() < 0 && !cmld_hostedmode)
+-		FATAL("Could not remount rootfs read-only");
++	WARN("Skipping mount_root_ro() for now on RISC-V");
++	//if (mount_remount_root_ro() < 0 && !cmld_hostedmode)
++	//	FATAL("Could not remount rootfs read-only");
+ 
+ 	if (mount_debugfs() < 0)
+ 		WARN("Could not mount debugfs (already mounted?)");
+-- 
+2.30.2
+

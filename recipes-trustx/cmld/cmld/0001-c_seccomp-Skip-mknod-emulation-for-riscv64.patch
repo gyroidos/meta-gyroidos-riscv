@@ -1,0 +1,34 @@
+From 3e197dcbfc48c1458b7b75482dc77569611c2abd Mon Sep 17 00:00:00 2001
+From: Felix Wruck <felix.wruck@aisec.fraunhofer.de>
+Date: Tue, 1 Oct 2024 18:06:19 +0200
+Subject: [PATCH] c_seccomp: Skip mknod emulation for riscv64
+
+---
+ daemon/c_seccomp/seccomp.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/daemon/c_seccomp/seccomp.c b/daemon/c_seccomp/seccomp.c
+index e29f2bc..fbaf033 100644
+--- a/daemon/c_seccomp/seccomp.c
++++ b/daemon/c_seccomp/seccomp.c
+@@ -202,7 +202,7 @@ c_seccomp_install_filter(c_seccomp_t *_seccomp)
+ 	 * and thus follows a deny-list approach.
+ 	 */
+ 	struct sock_filter filter_tail[] = {
+-#if (C_SECCOMP_AUDIT_ARCH != AUDIT_ARCH_AARCH64)
++#if (C_SECCOMP_AUDIT_ARCH != AUDIT_ARCH_AARCH64) && (C_SECCOMP_AUDIT_ARCH != AUDIT_ARCH_RISCV64)
+ 		/*
+ 		 * Note for future syscalls
+ 		 * ========================
+@@ -403,7 +403,7 @@ c_seccomp_handle_notify(int fd, unsigned events, UNUSED event_io_t *io, void *da
+ 	case SYS_finit_module:
+ 		ret_syscall = c_seccomp_emulate_finit_module(seccomp, req, resp);
+ 		break;
+-#if (C_SECCOMP_AUDIT_ARCH != AUDIT_ARCH_AARCH64)
++#if (C_SECCOMP_AUDIT_ARCH != AUDIT_ARCH_AARCH64) && (C_SECCOMP_AUDIT_ARCH != AUDIT_ARCH_RISCV64)
+ 	// SYS_mknod not defined on arm64
+ 	case SYS_mknod:
+ #endif
+-- 
+2.39.5
+
