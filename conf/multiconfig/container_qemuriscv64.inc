@@ -1,6 +1,6 @@
 MACHINE = "qemuriscv64"
 
-DISTRO = "gyroidos-core"
+DISTRO = "core-ref"
 
 PACKAGE_CLASSES = "package_deb"
 
@@ -18,13 +18,11 @@ PACKAGECONFIG:append:pn-nativesdk-qemu = " sdl"
 CONF_VERSION = "2"
 
 PREFERRED_PROVIDER_virtual/kernel = "linux-dummy"
-PREFERRED_PROVIDER_virtual/kernel:gyroidos-core = "linux-dummy"
+PREFERRED_PROVIDER_virtual/kernel:core-ref = "linux-dummy"
 PREFERRED_PROVIDER_virtual/kernel:linuxstdbase = "linux-dummy"
 
 IMAGE_FSTYPES = "cpio.gz ext4"
 INITRAMFS_IMAGE = ""
-
-TRUSTME_HARDWARE = "x86"
 
 # Possible provider: cacao-initial-native and jamvm-initial-native
 PREFERRED_PROVIDER_virtual/java-initial-native = "cacao-initial-native"
