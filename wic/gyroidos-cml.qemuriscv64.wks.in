@@ -1,0 +1,4 @@
+part /boot --source bootimg-partition --fstype=${GYROIDOS_BOOTPART_FS} --label boot --active --fixed-size ${GYROIDOS_BOOTPART_SIZE}M
+part / --source rootfs --fstype=${GYROIDOS_DATAPART_FS} --label ${GYROIDOS_DATAPART_LABEL} --align ${GYROIDOS_TARGET_ALIGN} --extra-space ${GYROIDOS_DATAPART_EXTRA_SPACE}M --overhead-factor 1
+
+bootloader --ptable ${GYROIDOS_PARTTABLE_TYPE}

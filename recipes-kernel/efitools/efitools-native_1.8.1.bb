@@ -3,8 +3,8 @@ require efitools-common.inc
 SRC_URI[md5sum] = "5f20ed9cccf786cf6525c54537ae7831"
 SRC_URI[sha256sum] = "d48b66768374ce742971c44e475b7336992b3d0a51407920a2e3876e8d9fc329"
 
-inherit native
 inherit perlnative
+inherit native
 
 DEPENDS = "gnu-efi-native help2man-native sbsigntool-native libfile-slurp-perl-native"
 
