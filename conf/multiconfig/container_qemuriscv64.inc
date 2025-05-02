@@ -21,7 +21,9 @@ PREFERRED_PROVIDER_virtual/kernel = "linux-dummy"
 PREFERRED_PROVIDER_virtual/kernel:core-ref = "linux-dummy"
 PREFERRED_PROVIDER_virtual/kernel:linuxstdbase = "linux-dummy"
 
-IMAGE_FSTYPES = "cpio.gz ext4"
+KERNEL_DEVICETREE = ""
+
+IMAGE_FSTYPES = "ext4"
 INITRAMFS_IMAGE = ""
 
 # Possible provider: cacao-initial-native and jamvm-initial-native
@@ -34,3 +36,7 @@ PREFERRED_PROVIDER_virtual/java-native = "cacao-native"
 PREFERRED_PROVIDER_virtual/javac-native = "ecj-bootstrap-native"
 #LICENSE_FLAGS_WHITELIST += "oracle_java"
 
+EXTRA_IMAGEDEPENDS:remove = "opensbi"
+IMAGE_BOOTLOADER = ""
+
+UBOOT_ENV = ""
