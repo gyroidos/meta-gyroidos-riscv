@@ -9,7 +9,7 @@ INITRAMFS_IMAGE = "gyroidos-cml-initramfs"
 GYROIDOS_PARTTABLE_TYPE = "gpt"
 GYROIDOS_HARDWARE = "riscv"
 GYROIDOS_LOGTTY = "ttyS0"
-GYROIDOS_CONTAINER_ARCH = "qemuriscv64"
+GYROIDOS_GUESTOS_ARCH = "qemuriscv64"
 GYROIDOS_FSTYPES = "wic wic.bmap"
 
 GYROIDOS_TARGET_ALIGN = "4096"
@@ -26,7 +26,7 @@ HSS_PAYLOAD = "uboot"
 PKI_UEFI_KEYS = "n"
 
 PACKAGE_CLASSES = "package_ipk"
-BBMULTICONFIG = "container"
+BBMULTICONFIG = "guestos"
 
 INITRAMFS_MODULES = ""
 
